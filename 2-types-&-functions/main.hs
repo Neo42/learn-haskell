@@ -53,7 +53,7 @@ tellAge name =
 -- 10 == 10 / 1
 
 -- Typeclass
--- Specify constraints should be on arguments when we use this function
+-- Specify constraints that should be on arguments when we use this function
 -- define a typeclass of Num, which contains Int, Double and so on,
 -- and orderables, which allow comparison operation on the value
 idk :: (Num a, Ord a) => a -> a
