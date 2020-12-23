@@ -45,7 +45,7 @@ myMap :: (a -> a) -> ([a] -> [a]) -- a callback as arg, returns a function
 myMap func list =
   case list of
     [] -> []
-    (first : rest) ->
+    first : rest ->
       func first : myMap func rest
 
 myHead :: [a] -> a
@@ -53,7 +53,7 @@ myHead :: [a] -> a
 myHead xs =
   case xs of
     [] -> undefined
-    (first : rest) -> first
+    first : rest -> first
 
 myTail :: [a] -> [a]
 myTail xs =
