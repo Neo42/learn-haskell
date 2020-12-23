@@ -65,6 +65,30 @@ isPalindromeIgnoringCase :: String -> Bool
 isPalindromeIgnoringCase word =
   isPalindrome (allLowerCase word)
 
+isPalindromePhrase :: String -> Bool
+isPalindromePhrase phrase =
+  isPalindrome (withoutSpace phrase)
+
+withoutSpace :: String -> String
+withoutSpace = myFilter notSpace
+
+notSpace :: Char -> Bool
+notSpace x = x /= ' '
+
+-- case phrase of
+--   [] -> []
+--   ' ' : rest -> withoutSpace rest
+--   first : rest -> first : withoutSpace rest
+
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter predicate string =
+  case string of
+    [] -> []
+    first : rest ->
+      if predicate first
+        then first : myFilter predicate rest -- if the head fits the callback, then keep it and move on to the next one.
+        else myFilter predicate rest -- if not, just move on to the next one.
+
 main :: IO ()
 main = do
   word <- getLine
